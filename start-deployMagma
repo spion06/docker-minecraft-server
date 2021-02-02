@@ -3,10 +3,11 @@
 . ${SCRIPTS:-/}start-utils
 
 export SERVER="/data/magma-server-${VANILLA_VERSION}.jar"
+export MAGMA_TRAIN=${MAGMA_TRAIN-:"stable"}
 
 # Always download since new updates of each base version are published frequently
 if ! curl -o /data/magma-server-${VANILLA_VERSION}.jar -fsSL \
-  https://api.magmafoundation.org/api/resources/Magma/${VANILLA_VERSION}/stable/latest/download; then
+  https://api.magmafoundation.org/api/resources/Magma/${VANILLA_VERSION}/${MAGMA_TRAIN}/latest/download; then
   log "ERROR unable to download version ${VANILLA_VERSION} of Magma"
   log "      Check https://magmafoundation.org/ for available versions"
   exit 1
